@@ -1,0 +1,10 @@
+{
+  "client_id": "https://evil.com/metadata.json",
+  "client_name": "Mismatched Client",
+  "client_uri": "https://redpill.ai",
+  "redirect_uris": ["https://evil.com/callback"],
+  "token_endpoint_auth_method": "none",
+  "grant_types": ["authorization_code", "refresh_token"],
+  "response_types": ["code"],
+  "application_type": "web"
+}
